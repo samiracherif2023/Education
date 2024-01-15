@@ -1,0 +1,27 @@
+<table class="table table-sm">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Level</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of users">
+        <th >{{student._id}}</th>
+        <th >{{student.firstName}}</th>
+        <th >{{student.lastName}}</th>
+        <td>{{student.email}}</td>
+        <td>{{student.tel}}</td>
+        <td>{{student.level}}</td>
+      
+      <button class="btn btn-warning" (click)="goToGiveNote(student._id)">Note</button>
+      <!-- <button class="btn btn-warning" (click)="goToGiveAvis(student._id)">Avis</button> -->
+      <button class="btn btn-warning" (click)="affectCourse(student._id)">Affect Course</button>
+      </tr>
+    </tbody>
+  </table>

@@ -1,0 +1,53 @@
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title bg-white text-center text-primary px-3">Add Course</h6>
+            <h1 class="mb-5">Add Course</h1>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-12 wow fadeInUp"></div>
+            <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
+                <form [formGroup]="courseForm">
+                    <div class="row g-3">
+                        <div class="col-md-12">
+                            <div class="form-floating">
+                                <input type="text" id="name" formControlName="name" class="form-control" placeholder="Name">
+                                <div *ngIf="courseForm.controls['name'].invalid && (courseForm.controls['name'].touched || courseForm.controls['name'].dirty)">
+                                    <div *ngIf="courseForm.controls['name'].errors.required" style="color: red;">
+                                        Course Name is required
+                                    </div>
+                                   
+                                </div>
+                                <label for="name">Couse Name</label>
+                            </div>
+
+                            <div class="form-floating">
+                                <input type="text" id="description" formControlName="description" class="form-control" placeholder="Description">
+                                <div *ngIf="courseForm.controls['description'].invalid && (courseForm.controls['description'].touched || courseForm.controls['description'].dirty)">
+                                    <div *ngIf="courseForm.controls['description'].errors.required" style="color: red;">
+                                        Description is required
+                                    </div>
+                                    
+                                </div>
+                                <label for="description">Description</label>
+                            </div>
+                            <div class="form-floating">
+                                <input type="text" id="module" formControlName="module" class="form-control" placeholder="Module">
+                                <div *ngIf="courseForm.controls['module'].invalid && (courseForm.controls['module'].touched || courseForm.controls['module'].dirty)">
+                                    <div *ngIf="courseForm.controls['module'].errors.required" style="color: red;">
+                                        Module is required
+                                    </div>
+                                   
+                                </div>
+                                <label for="module">Module</label>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary w-100 py-3" type="submit" (click)="addCourse()" [disabled]="courseForm.invalid">Add Course</button>
+                            </div>
+                        </div>
+                    </div> 
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

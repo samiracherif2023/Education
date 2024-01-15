@@ -1,0 +1,107 @@
+<!-- Team Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title bg-white text-center text-primary px-3">User</h6>
+            <h1 class="mb-5">{{user.role}} Information</h1>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4"> </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="team-item bg-light">
+                    <div class="overflow-hidden" *ngIf="user.role=='student'">
+                        <img [src]="user.img" *ngIf="user.img" alt="Image" class="img-fluid">
+                    </div>
+                    <div class="overflow-hidden" *ngIf="user.role=='teacher'">
+                        <iframe [src]="user.cv | safe" width="500px" height="500px" class="img-fluid"></iframe>
+                    </div>
+                </div>
+                <div>
+                    <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
+                        <div class="bg-light d-flex justify-content-center pt-2 px-1">
+                            <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="text-center p-4" *ngIf="user.role=='student'">
+                        <h5 class="mb-0">{{user.firstName}} {{user.lastName}}</h5>
+                        Phone: <small>{{user.tel}}</small> <br>
+                        Email: <small>{{user.email}}</small><br>
+                        Level: <small>{{user.level}}</small>
+                    </div>
+                    <div class="text-center p-4" *ngIf="user.role=='teacher'">
+                        <h5 class="mb-0">{{user.firstName}} {{user.lastName}}</h5>
+                        Phone: <small>{{user.tel}}</small> <br>
+                        Email: <small>{{user.email}}</small><br>
+                        Speciality: <small>{{user.speciality}}</small>
+                    </div>
+                    <div class="text-center p-4" *ngIf="user.role=='parent'">
+                        <h5 class="mb-0">{{user.firstName}} {{user.lastName}}</h5>
+                        Phone: <small>{{user.tel}}</small> <br>
+                        Phone Child: <small>{{user.telChild}}</small> <br>
+                        Email: <small>{{user.email}}</small><br>
+                    </div>
+                    <div class="text-center p-4" *ngIf="roleId == user.role ">
+                        <form *ngIf="modifie==false" class="form-group" #changePasswordForm="ngForm"
+                            (ngSubmit)="changePassword()">
+                            <button type="Submit" Value="Submit" class="btn btn-primary">
+                                Change Password
+                            </button>
+                        </form>
+                    </div>
+                    <div style="color: red; text-align: center;"> {{errorMsg}}</div>
+                    <div class="text-center p-4">
+                        <form *ngIf="modifie==true" #validatePasswordForm="ngForm" (ngSubmit)="validatePassword()">
+                            <div class="form-group" id="errorMsg">
+                                <input style="margin-bottom: 20px;" type="password" class="form-control"
+                                    [(ngModel)]="user.oldPassword" name="oldPassword" placeholder="Old Password">
+                               
+                            </div>
+                            <div class="form-group">
+                                <input style="margin-bottom: 20px;" type="password" class="form-control"
+                                    [(ngModel)]="user.newPassword" name="newPassword" placeholder="New Password">
+                            </div>
+                            <button class="btn btn-success w-100 py-3" type="submit">Validate</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row g-4" *ngIf="user.role=='student' && role=='admin'">
+            <div class="col-lg-4"> </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <form #affectForm="ngForm" (ngSubmit)="validate()">
+                    <div class="form-group">
+                        <select style="margin-top: 20px;" class="form-select" [(ngModel)]="user.teacherId"
+                            name="teacherId">
+                            <option selected>Please select teacher</option>
+                            <option [value]="teacher._id" *ngFor="let teacher of teachersTab">{{teacher.firstName}}
+                            </option>
+                        </select>
+                    </div><br>
+                    <button style="margin-left: 120px;" class="btn btn-info">Validate</button>
+                </form>
+            </div>
+        </div>
+        <div class="row g-4" *ngIf="user.role=='student' && role=='teacher'">
+            <div class="col-lg-4"> </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <form #affectForm="ngForm" (ngSubmit)="validateCourse()">
+                    <div class="form-group">
+                        <select style="margin-top: 20px;" class="form-select" [(ngModel)]="user.courseId"
+                            name="courseId">
+                            <option selected>Please select course</option>
+                            <option [value]="course._id" *ngFor="let course of coursesTab">{{course.name}}
+                            </option>
+                        </select>
+                    </div><br>
+                    <button style="margin-left: 120px;" class="btn btn-info">Validate</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Team End -->

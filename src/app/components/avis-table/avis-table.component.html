@@ -1,0 +1,21 @@
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Id User</th>
+            <th scope="col">Id Teacher</th>
+            <th scope="col">name Teacher</th>
+            <th scope="col">Avis</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let avi of avisStudent">
+            <th>{{avi.id}}</th>
+            <th>{{avi.studentId}}</th>
+            <td>{{avi.teacherId}}</td>
+            <td>{{searchTeacher(avi.teacherId).firstName}} {{searchTeacher(avi.teacherId).lastName}}</td>
+            <td>{{avi.subject | space}}</td>
+        </tr>
+    </tbody>
+</table>
+

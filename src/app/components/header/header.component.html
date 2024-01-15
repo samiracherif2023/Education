@@ -1,0 +1,39 @@
+<!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+    <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+        <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>eLEARNING</h2>
+    </a>
+    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <a routerLink="" class="nav-item nav-link active">{{Home}}</a>
+            <div *ngIf="userRole=='admin'"><a routerLink="admin" class="nav-item nav-link">{{Admin}}</a></div>
+            <a routerLink="courses" class="nav-item nav-link">{{Courses}}</a>
+            <div *ngIf="userRole=='teacher'" class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{Teacher}}</a>
+                <div class="dropdown-menu fade-down m-0">
+                    <a routerLink="addCourse" class="dropdown-item">Add Course</a>
+                    <a routerLink="teacher" class="dropdown-item">Dashbord Teacher</a>
+                </div>
+            </div>
+            <div *ngIf="userRole=='student'"><a routerLink="student" class="nav-item nav-link">{{Student}}</a></div>
+            <div *ngIf="userRole=='parent'"><a routerLink="parent" class="nav-item nav-link">{{Parent}}</a></div>
+            
+        </div>
+        <div *ngIf="!userId "><a routerLink="login" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Login</a>
+        </div>
+        <div *ngIf="!userId "><a routerLink="signup" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Signup
+                Student</a></div>
+        <div *ngIf="!userId "> <a routerLink="signupTeacher"
+                class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Signup Teacher</a></div>
+        <div *ngIf="!userId "> <a routerLink="student" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Signup
+                Parent</a>
+        </div>
+        <div *ngIf="userId "><a routerLink="logout" (click)="logout()"
+                class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Logout<i class="fa fa-arrow-right ms-3"></i></a>
+        </div>
+    </div>
+</nav>
+<!-- Navbar End -->

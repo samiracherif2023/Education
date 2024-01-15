@@ -1,0 +1,20 @@
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Id Student</th>
+            <th scope="col">Id Teacher</th>
+            <!-- <th scope="col">name Teacher</th> -->
+            <th scope="col">Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let note of notes">
+            <th>{{note._id}}</th>
+            <th>{{note.studentId}}</th>
+            <td>{{note.teacherId}}</td>
+            <!-- <td>{{searchTeacher(note.teacherId).firstName}} {{searchTeacher(note.teacherId).lastName}}</td> -->
+            <td [ngStyle]="{'color':noteColor(note.value)}">{{note.note}}</td>
+        </tr>
+    </tbody>
+</table>

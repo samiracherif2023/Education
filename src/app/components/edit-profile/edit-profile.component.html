@@ -1,0 +1,81 @@
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title bg-white text-center text-primary px-3">User</h6>
+            <h1 class="mb-5">Edit Profile</h1>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-12 wow fadeInUp"></div>
+            <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
+                <form [formGroup]="editForm">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" formControlName="firstName" [(ngModel)]="user.firstName" class="form-control"
+                                    placeholder="First Name">
+                                
+                                <label for="name">First Name</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" formControlName="lastName" [(ngModel)]="user.lastName" class="form-control"
+                                    placeholder="Last Name">
+                                
+                                <label for="name">Last Name</label>
+                            </div>
+                        </div>
+                      
+                            
+                            <div class="col-12" >
+                                <div class="form-floating" >
+                                    <input type="tel" class="form-control" formControlName="tel"  [(ngModel)]="user.tel"
+                                        placeholder="Phone">
+                                    
+                                    <label for="password">Phone</label>
+                                </div>
+                                <div class="form-floating" *ngIf="user.role=='parent'">
+                                    <input type="tel" class="form-control" formControlName="telCild"  [(ngModel)]="user.telChild"
+                                        placeholder="Phone Child">
+                                    
+                                    <label for="password">Phone</label>
+                                </div>
+                                <div class="col-12" style="padding-top: 20px;">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" formControlName="adress"  [(ngModel)]="user.adress"
+                                            placeholder="Adress">
+                                        
+                                        <label for="password" >Adress</label>
+                                    </div>
+                                    <div class="col-12" style="padding-top: 20px;" *ngIf="user.role=='student'">
+                                        <div class="form-floating">
+                                            <select class="form-select" aria-label="Default select example"
+                                                formControlName="level" id="level">
+                                                    <option selected>Choose level</option>
+                                                    <option value="7">7 éme</option>
+                                                    <option value="8">8 éme</option>
+                                                    <option value="9">9 éme</option>
+                                            </select>
+                                             <label for="password">Level</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12" *ngIf="user.role=='teacher'">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" formControlName="speciality"  [(ngModel)]="user.speciality"
+                                                placeholder="Speciality">
+                                            
+                                            <label for="password">Speciality</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12" style="padding-top: 20px;">
+                                        <button class="btn btn-primary w-100 py-3" type="submit"
+                                            (click)="editProfile()">Edit Profile</button>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

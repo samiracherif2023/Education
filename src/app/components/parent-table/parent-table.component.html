@@ -1,0 +1,27 @@
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title bg-white text-center text-primary px-3">Dashbord</h6>
+            <h1 class="mb-5">Parent</h1>
+        </div>
+<table class="table table-sm">
+    <thead>
+        <tr>
+          
+            <th scope="col"> Student Name</th>
+            <th scope="col"> Student Note</th>
+            <th scope="col"> Teacher Name</th>
+            
+            <th scope="col">Teacher Speciality</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr >
+            <th>{{noteObj.firstName}}</th>
+            <th>{{value.note}}</th>
+            <td>{{searchTeacher(noteObj.teacherId)?.firstName}} {{searchTeacher(noteObj.teacherId)?.lastName}}</td>
+            <td>{{searchTeacher(noteObj.teacherId)?.speciality}}</td>
+            
+        </tr>
+    </tbody>
+</table>

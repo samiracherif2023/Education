@@ -1,0 +1,70 @@
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title bg-white text-center text-primary px-3">Login</h6>
+            <h1 class="mb-5">Login</h1>
+            <div style="color: red;">{{errorMsg}}</div>
+
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-12 wow fadeInUp"></div>
+            <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
+                <form [formGroup]="loginForm">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" formControlName="email" placeholder="Email">
+                                <div *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].touched 
+                                || loginForm.controls['email'].dirty)">
+                                    
+                                    <div *ngIf="loginForm.controls['email'].errors.email" style="color: red;">
+                                        Email invalid
+                                    </div>
+                                </div>
+                                <label for="email">Email</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                        <div class="form-floating" >
+                            <input type="tel" class="form-control"  formControlName="tel" placeholder="Phone">
+                            <div *ngIf="loginForm.controls['tel'].invalid &&
+                                    (loginForm.controls['tel'].touched || 
+                                    loginForm.controls['tel'].dirty)">
+                                        <div *ngIf="loginForm.controls['tel'].errors.minlength" style="color: red;">
+                                            Phone must have 8 chars
+                                        </div>
+                                        <div *ngIf="loginForm.controls['tel'].errors.maxlength" style="color: red;">
+                                            Phone must have 8 chars
+                                        </div>
+                                       
+                                    </div>
+                               
+                            
+                            <label for="password">Phone</label>
+                        </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="password" class="form-control" formControlName="password" placeholder="Password">
+                                <div *ngIf="loginForm.controls['password'].invalid &&
+                                (loginForm.controls['password'].touched || 
+                                loginForm.controls['password'].dirty)">
+                                <div *ngIf="loginForm.controls['password'].errors.required" style="color: red;">
+                                    Password is required
+                                </div>
+                                <div *ngIf="loginForm.controls['password'].errors.minlength" style="color: red;">
+                                    Password must have at least 6 chars
+                                </div>
+                            </div>
+                                <label for="password">Password</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary w-100 py-3" type="submit" (click)="login()">Login</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

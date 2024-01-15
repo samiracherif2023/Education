@@ -1,0 +1,29 @@
+<table class="table table-sm">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Speciality</th>
+        <th scope="col">status</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let teacher of teachersTab">
+        <th >{{teacher.id}}</th>
+        <th >{{teacher.firstName}}</th>
+        <th >{{teacher.lastName}}</th>
+        <td>{{teacher.email}}</td>
+        <td>{{teacher.speciality}}</td>
+        <td>{{teacher.status}}</td>
+        
+        <button  (click)="confirm(teacher.id)"><span [ngClass]="{
+          'ok': teacher.status == 'ok',
+          'nok': teacher.status == 'NOK'
+        }"> Confirm</span></button>
+      
+      </tr>  
+    </tbody>
+  </table>

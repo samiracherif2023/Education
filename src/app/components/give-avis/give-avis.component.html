@@ -1,0 +1,31 @@
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title bg-white text-center text-primary px-3">Teacher</h6>
+            <h1 class="mb-5">Give Avis</h1>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-12 wow fadeInUp"></div>
+            <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
+                <form #avisForm="ngForm" (ngSubmit)="validate()">
+                    <div class="row g-3">
+                        <div class="col-md-12">
+                            <div class="form-floating">
+                                <input type="text" [(ngModel)]="studentAvis.subject" name="subject" class="form-control"
+                                placeholder="Avis" #subject="ngModel"
+                                [ngClass]="{ 'is-invalid': avisForm.submitted && subject.invalid }" required >
+                                <div *ngIf="avisForm.submitted && subject.invalid" class="invalid-feedback">
+                                   <p style="color: red;" *ngIf="subject.errors.required">Avis is required</p>
+                               </div>
+                           <label for="subject">Avis</label>  
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary w-100 py-3" type="submit">VALIDATE</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

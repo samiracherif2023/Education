@@ -1,0 +1,11 @@
+.ok{
+    background-color: green;
+    /* color: green; */
+    font-size: 20px;
+}
+
+.nok{
+    background-color: red;
+    /* color: red; */
+    font-size: 30px;
+}

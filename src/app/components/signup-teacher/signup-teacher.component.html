@@ -1,0 +1,149 @@
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title bg-white text-center text-primary px-3">Signup</h6>
+            <h1 class="mb-5">Teacher Signup</h1>
+            <div style="color: red;">{{errorMsg}}</div>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-12 wow fadeInUp"></div>
+            <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
+                <form [formGroup]="teacherForm">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" formControlName="firstName" class="form-control"
+                                    placeholder="First Name">
+                                <div *ngIf="teacherForm.controls['firstName'].invalid &&
+                                    (teacherForm.controls['firstName'].touched || 
+                                    teacherForm.controls['firstName'].dirty)">
+                                    <div *ngIf="teacherForm.controls['firstName'].errors.required" style="color: red;">
+                                        First Name is required
+                                    </div>
+                                    <div *ngIf="teacherForm.controls['firstName'].errors.minlength" style="color: red;">
+                                        First Name must have at least 3 chars
+                                    </div>
+                                </div>
+                                <label for="name">First Name</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" formControlName="lastName" class="form-control"
+                                    placeholder="Last Name">
+                                <div *ngIf="teacherForm.controls['lastName'].invalid &&
+                                    (teacherForm.controls['lastName'].touched || 
+                                    teacherForm.controls['lastName'].dirty)">
+                                    <div *ngIf="teacherForm.controls['lastName'].errors.required" style="color: red;">
+                                        Last Name is required
+                                    </div>
+                                    <div *ngIf="teacherForm.controls['lastName'].errors.minlength" style="color: red;">
+                                        Last Name must have at least 3 chars
+                                    </div>
+                                </div>
+                                <label for="name">Last Name</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" formControlName="email" placeholder="Email">
+
+                                <div *ngIf="teacherForm.controls['email'].invalid && (teacherForm.controls['email'].touched 
+                                || teacherForm.controls['email'].dirty)">
+                                    <div *ngIf="teacherForm.controls['email'].errors.required" style="color: red;">
+                                        Email is required
+                                    </div>
+                                    <div *ngIf="teacherForm.controls['email'].errors.email" style="color: red;">
+                                        Email invalid
+                                    </div>
+                                </div>
+                                <label for="email">Email</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="password" formControlName="password" class="form-control" id="password"
+                                    placeholder="Password">
+                                <div *ngIf="teacherForm.controls['password'].invalid &&
+                                    (teacherForm.controls['password'].touched || 
+                                    teacherForm.controls['password'].dirty)">
+                                    <div *ngIf="teacherForm.controls['password'].errors.required" style="color: red;">
+                                        Password is required
+                                    </div>
+                                    <div *ngIf="teacherForm.controls['password'].errors.minlength" style="color: red;">
+                                        Password must have at least 6 chars
+                                    </div>
+                                </div>
+                                <label for="password">Password</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="tel" class="form-control" formControlName="tel" placeholder="Phone">
+                                <div *ngIf="teacherForm.controls['tel'].invalid &&
+                                    (teacherForm.controls['tel'].touched || 
+                                    teacherForm.controls['tel'].dirty)">
+                                    <div *ngIf="teacherForm.controls['tel'].errors.minlength" style="color: red;">
+                                        Phone must have 8 chars
+                                    </div>
+                                    <div *ngIf="teacherForm.controls['tel'].errors.maxlength" style="color: red;">
+                                        Phone must have 8 chars
+                                    </div>
+
+                                </div>
+                                <label for="password">Phone</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" formControlName="adress" id="adress"
+                                    placeholder="Adress">
+                                <div *ngIf="teacherForm.controls['adress'].invalid &&
+                            (teacherForm.controls['adress'].touched || 
+                            teacherForm.controls['adress'].dirty)">
+                                    <div *ngIf="teacherForm.controls['adress'].errors.required" style="color: red;">
+                                        Adress is required
+                                    </div>
+                                </div>
+                                <label for="password">Adress</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" formControlName="speciality"
+                                    placeholder="Speciality">
+                                <div *ngIf="teacherForm.controls['speciality'].invalid &&
+                            (teacherForm.controls['speciality'].touched || 
+                            teacherForm.controls['speciality'].dirty)">
+                                    <div *ngIf="teacherForm.controls['speciality'].errors.required" style="color: red;">
+                                        Speciality is required
+                                    </div>
+                                </div>
+                                <label for="password">Speciality</label>
+                            </div>
+                        </div>
+                        <div class="form-group" style="visibility: hidden;">
+                            <input type="file" class="form-control" #filePicker (change)="onImageSelected($event)">
+                        </div>
+                        <div class="col-12">
+                            <div class="text-center">
+                                <div class="text-center">
+                                    <button class="btn btn-success" (click)="filePicker.click()">Select Your CV</button>
+                                </div>
+                                <!-- <img [src]="imagePreview" *ngIf="imagePreview" width="200px" height="200px"> -->
+                                <!-- <embed [src]="imagePreview" type="application/pdf" *ngIf="imagePreview" width="200px" height="200px">  -->
+                                <iframe [src]='imagePreview | safe' width="420" height="360" *ngIf="imagePreview">
+                                </iframe>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <button class="btn btn-primary w-100 py-3" type="submit" (click)="signupTeacher()"
+                                [disabled]="teacherForm.invalid">Signup Teacher</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
